@@ -1,0 +1,60 @@
+<header class="navbar">
+  <div class="navbar__container">
+
+    <!-- Logo -->
+    <a class="navbar__logo" href="#home" aria-label="Business Spot AI Home">
+      <img
+        src="/png-logo.png"
+        alt="Business Spot AI"
+      />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="navbar__menu" aria-label="Main navigation">
+      <a href="#home" class="navbar__link">Home</a>
+      <a href="#services" class="navbar__link">Services</a>
+      <a href="#work" class="navbar__link">Work</a>
+      <a href="#about" class="navbar__link">About</a>
+      <a href="#contact" class="navbar__link">Contact</a>
+
+      <a href="#contact" class="navbar__cta">
+        <span>Let's Talk</span>
+        <span class="navbar__arrow">↗</span>
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="navbar__toggle"
+      type="button"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="menuOpen"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav
+    class="navbar__mobile"
+    [class.navbar__mobile--open]="menuOpen"
+    aria-label="Mobile navigation"
+  >
+    <a href="#home" (click)="closeMenu()">Home</a>
+    <a href="#services" (click)="closeMenu()">Services</a>
+    <a href="#work" (click)="closeMenu()">Work</a>
+    <a href="#about" (click)="closeMenu()">About</a>
+    <a href="#contact" (click)="closeMenu()">Contact</a>
+
+    <a
+      href="#contact"
+      class="navbar__mobile-cta"
+      (click)="closeMenu()"
+    >
+      Let's Talk ↗
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,79 @@
+<section class="hero" id="home">
+
+  <!-- Background video -->
+  <video
+    #heroVideo
+    class="hero__video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="none"
+    poster="/hero-poster4.png"
+    data-src="/herosection-video.mp4"
+    aria-hidden="true"
+  >
+  </video>
+
+  <!-- Dark overlay -->
+  <div class="hero__overlay"></div>
+
+  <!-- Content -->
+  <div class="hero__content">
+
+    <div class="hero__eyebrow">
+      <span class="hero__line"></span>
+      AI&nbsp;&nbsp;.&nbsp;&nbsp;SOFTWARE&nbsp;&nbsp;.&nbsp;&nbsp;AUTOMATION
+      <span class="hero__line"></span>
+    </div>
+
+    <h1 class="hero__title">
+
+      <span class="hero__static">
+        WE BUILD
+      </span>
+
+      <span class="hero__rotating" aria-live="polite">
+        <span
+          class="hero__rotating-word hero__rotating-word--previous"
+          [class.hero__rotating-word--leaving]="isRotating()"
+        >
+          {{ previousRotatingText() }}
+        </span>
+        <span
+          class="hero__rotating-word hero__rotating-word--current"
+          [class.hero__rotating-word--entering]="isRotating()"
+        >
+          {{ rotatingText() }}
+        </span>
+      </span>
+
+    </h1>
+
+    <p class="hero__description">
+      We design and build intelligent digital products,
+      connected systems, and automation that help businesses grow.
+    </p>
+
+    <div class="hero__actions">
+
+      <a
+        href="#contact"
+        class="hero__button hero__button--primary"
+      >
+        START A PROJECT
+        <span>↗</span>
+      </a>
+
+      <a
+        href="#work"
+        class="hero__button hero__button--secondary"
+      >
+        VIEW OUR WORK
+      </a>
+
+    </div>
+
+  </div>
+
+</section>

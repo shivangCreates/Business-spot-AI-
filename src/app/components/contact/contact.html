@@ -1,0 +1,87 @@
+<section class="contact" id="contact" aria-labelledby="contact-title">
+	<div class="contact__container page-container">
+		<header class="contact__header">
+			<h2 id="contact-title"><span>Start a Project</span></h2>
+			<p>Have an ambitious idea, a complex challenge, or a system ready to evolve? Let’s make the next move clear.</p>
+		</header>
+
+		<div class="contact__layout">
+			<aside class="contact__aside">
+				<p class="contact__eyebrow">Let’s work together</p>
+				<h3>Bring us the hard part.</h3>
+				<p class="contact__aside-copy">
+					Tell us where you are now and where you want to go. We’ll come back with thoughtful questions,
+					a practical direction, and the right next step.
+				</p>
+
+				<div class="contact__details">
+					<a href="mailto:hello@businessspot.ai">
+						<span class="contact__detail-label">Email us</span>
+						hello@businessspot.ai
+					</a>
+					<a href="tel:+919876543210">
+						<span class="contact__detail-label">Call our studio</span>
+						+91 98765 43210
+					</a>
+				</div>
+				<p class="contact__availability"><span></span>Currently welcoming global projects</p>
+			</aside>
+
+			@if (!submitted()) {
+				<form class="contact-form" #projectForm="ngForm" (ngSubmit)="submitForm()" novalidate>
+					<div class="contact-form__row">
+						<label>
+							<span>Your name</span>
+							<input type="text" name="name" ngModel required placeholder="Jane Smith" />
+						</label>
+						<label>
+							<span>Work email</span>
+							<input type="email" name="email" ngModel required email placeholder="jane@company.com" />
+						</label>
+					</div>
+
+					<div class="contact-form__row">
+						<label>
+							<span>Company</span>
+							<input type="text" name="company" ngModel placeholder="Your company" />
+						</label>
+						<label>
+							<span>Project type</span>
+							<select name="projectType" ngModel required>
+								<option value="" disabled selected>Choose a focus</option>
+								<option>AI solutions</option>
+								<option>Custom software</option>
+								<option>Digital product</option>
+								<option>Automation</option>
+								<option>Something else</option>
+							</select>
+						</label>
+					</div>
+
+					<label>
+						<span>Tell us about the project</span>
+						<textarea name="message" ngModel required rows="5" placeholder="What are you building, improving, or trying to solve?"></textarea>
+					</label>
+
+					<div class="contact-form__footer">
+						<label class="contact-form__consent">
+							<input type="checkbox" name="consent" ngModel required />
+							<span>I agree to be contacted about this project.</span>
+						</label>
+						<button type="submit" [disabled]="projectForm.invalid">
+							Send inquiry <span>↗</span>
+						</button>
+					</div>
+				</form>
+			} @else {
+				<div class="contact-success" role="status">
+					<span class="contact-success__icon">✓</span>
+					<p class="contact__eyebrow">Message received</p>
+					<h3>We’ll be in touch soon.</h3>
+					<p>Thank you for sharing your idea. Our team will review it and reply with the next step.</p>
+					<button type="button" (click)="submitted.set(false)">Send another inquiry</button>
+				</div>
+			}
+		</div>
+	</div>
+</section>

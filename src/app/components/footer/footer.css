@@ -1,0 +1,57 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem, 6vw, 6rem) 0 1.5rem;
+  background: #050505;
+  color: var(--white);
+}
+.footer::before {
+  position: absolute;
+  top: 0;
+  right: 12%;
+  width: 22rem;
+  height: 1px;
+  background: var(--brand-orange);
+  box-shadow: 0 0 35px 10px rgba(255, 106, 0, .22);
+  content: "";
+}
+.footer__container { position: relative; z-index: 1; }
+.footer__topline,
+.footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: rgba(255, 255, 255, .42); font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.footer__topline { padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.footer__hero { display: flex; justify-content: center; padding: clamp(3rem, 7vw, 7rem) 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.footer__conversation { display: inline-flex; align-items: center; gap: 1rem; border: 1px solid var(--brand-orange); padding: 1rem 1.35rem; color: var(--white); font-family: var(--font-display); font-size: clamp(1.05rem, 1.8vw, 1.45rem); font-weight: 800; letter-spacing: .14em; line-height: 1; text-decoration: none; text-transform: uppercase; transition: background-color .25s ease, color .25s ease, transform .25s ease; }
+.footer__conversation b { color: var(--brand-orange); font-family: inherit; font-size: 1.2em; font-weight: 400; letter-spacing: 0; transition: transform .25s ease; }
+.footer__conversation:hover,
+.footer__conversation:focus-visible { background: var(--brand-orange); color: #050505; transform: translateY(-3px); }
+.footer__conversation:hover b,
+.footer__conversation:focus-visible b { color: #050505; transform: translate(4px, -3px); }
+.footer__details { display: grid; grid-template-columns: minmax(15rem, .85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 9rem); padding: 3rem 0; }
+.footer__logo { display: inline-flex; align-items: center; gap: .7rem; color: var(--white); font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; text-decoration: none; }
+.footer__logo b { color: var(--bright-orange); }
+.footer__logo-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--brand-orange); color: var(--brand-orange); font-size: 1rem; }
+.footer__brand > p { max-width: 18rem; margin: 1.2rem 0 1.5rem; color: var(--color-text-muted); font-size: .86rem; line-height: 1.6; }
+.footer__socials { display: flex; gap: .6rem; }
+.footer__socials a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgba(255, 255, 255, .22); border-radius: 50%; color: rgba(255, 255, 255, .75); transition: border-color .25s ease, background-color .25s ease, color .25s ease, transform .25s ease; }
+.footer__socials a:hover { border-color: var(--brand-orange); background: var(--brand-orange); color: #050505; transform: translateY(-3px); }
+.footer__socials svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.footer__socials a:nth-child(2) svg { fill: currentColor; stroke: none; }
+.footer__nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.footer__nav div { display: flex; flex-direction: column; align-items: start; gap: .7rem; }
+.footer__nav p { margin: 0 0 .45rem; color: var(--bright-orange); font-size: .64rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.footer__nav a,
+.footer__nav span { color: rgba(255, 255, 255, .58); font-size: .78rem; line-height: 1.35; text-decoration: none; transition: color .25s ease; }
+.footer__nav a:hover { color: var(--white); }
+.footer__bottom { padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, .1); font-size: .56rem; font-weight: 500; letter-spacing: .1em; }
+
+@media (max-width: 720px) {
+  .footer__details { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 480px) {
+  .footer__conversation { gap: .65rem; padding: .9rem 1rem; font-size: 1rem; letter-spacing: .1em; }
+  .footer__topline span:last-child,
+  .footer__bottom span:last-child { display: none; }
+  .footer__nav { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
+  .footer__nav div:last-child { grid-column: 1 / -1; }
+  .footer__bottom { font-size: .5rem; }
+}

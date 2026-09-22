@@ -1,0 +1,51 @@
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+	<div class="testimonials__container page-container">
+		<header class="testimonials__header">
+			<h2 id="testimonials-title"><span>Testimonials</span></h2>
+			<p>
+				Trusted by ambitious teams who want technology to feel clearer, smarter, and more human.
+			</p>
+		</header>
+
+		<div
+			class="testimonial-deck"
+			aria-label="Client testimonials. Click or swipe to view another testimonial."
+			tabindex="0"
+			(pointerdown)="onPointerDown($event)"
+			(pointermove)="onPointerMove($event)"
+			(pointerup)="onPointerUp($event)"
+			(pointercancel)="onPointerUp($event)"
+			(click)="onDeckClick($event)"
+		>
+			@for (offset of [-2, -1, 0, 1, 2]; track testimonialAt(offset).name) {
+				@let testimonial = testimonialAt(offset);
+				<article
+					class="testimonial-card"
+					[class.testimonial-card--far-left]="offset === -2"
+					[class.testimonial-card--left]="offset === -1"
+					[class.testimonial-card--active]="offset === 0"
+					  [class.testimonial-card--enter-from-right]="offset === 0 && movementDirection() > 0"
+					  [class.testimonial-card--enter-from-left]="offset === 0 && movementDirection() < 0"
+					[class.testimonial-card--right]="offset === 1"
+					[class.testimonial-card--far-right]="offset === 2"
+					  (click)="$event.stopPropagation(); select(offset)"
+				>
+					<div class="testimonial-card__top">
+						<span class="testimonial-card__quote">“</span>
+						<span class="testimonial-card__mark">CLIENT NOTE</span>
+					</div>
+					<p class="testimonial-card__review">{{ testimonial.review }}</p>
+					<div class="testimonial-card__signature">
+						<img [src]="testimonial.image" [alt]="testimonial.alt" />
+						<span>
+							<strong>{{ testimonial.name }}</strong>
+							<small>{{ testimonial.role }}</small>
+						</span>
+					</div>
+				</article>
+			}
+		</div>
+
+		<p class="testimonials__hint">Swipe or select a card to continue</p>
+	</div>
+</section>

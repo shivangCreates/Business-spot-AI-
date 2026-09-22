@@ -1,0 +1,148 @@
+.about {
+	position: relative;
+	overflow: hidden;
+	padding: clamp(5rem, 8vw, 9rem) 0;
+	background: #0b0b0b;
+	color: var(--white);
+}
+
+.about__container { position: relative; z-index: 1; }
+.about__heading { display: flex; justify-content: center; }
+.about__heading h2 {
+	display: flex;
+	width: min(100%, 48rem);
+	align-items: center;
+	gap: 1.2rem;
+	margin: 0;
+	color: var(--white);
+	font-family: var(--font-display);
+	font-size: clamp(1.25rem, 2.25vw, 1.8rem);
+	font-weight: 800;
+	letter-spacing: .16em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+.about__heading h2::before,
+.about__heading h2::after {
+	height: 1px;
+	flex: 1;
+	background: rgba(255, 255, 255, .3);
+	content: "";
+}
+.about__heading h2 span { white-space: nowrap; }
+
+.about__layout {
+	display: grid;
+	grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+	align-items: center;
+	gap: clamp(3rem, 8vw, 8rem);
+	margin-top: clamp(3.5rem, 7vw, 6rem);
+}
+.about__copy { max-width: 34rem; }
+.about__eyebrow {
+	margin: 0 0 1rem;
+	color: var(--bright-orange);
+	font-size: .78rem;
+	font-weight: 700;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+}
+.about__copy h3 {
+	max-width: 18ch;
+	margin: 0 0 1.5rem;
+	color: var(--white);
+	font-family: var(--font-display);
+	font-size: clamp(2.15rem, 3.8vw, 4.2rem);
+	line-height: .94;
+	text-transform: uppercase;
+}
+.about__copy h3 span { display: block; }
+.about__copy p:not(.about__eyebrow) {
+	margin: 0 0 1.2rem;
+	color: var(--color-text-muted);
+	font-size: 1rem;
+	line-height: 1.75;
+}
+.about__copy .about__lead { color: rgba(255, 255, 255, .86); font-size: 1.15rem; }
+.about__facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .7rem 1.2rem;
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(255, 255, 255, .12);
+}
+.about__facts span { color: rgba(255, 255, 255, .62); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
+.about__facts strong { margin-right: .45rem; color: var(--bright-orange); font-size: .62rem; }
+
+.about__presence {
+	min-width: 0;
+	padding: clamp(1rem, 2.5vw, 2rem);
+	background: rgba(255, 255, 255, .025);
+}
+.about__presence-top,
+.about__presence-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.about__presence-top .about__eyebrow { margin: 0; }
+.about__presence-top > span,
+.about__presence-bottom { color: rgba(255, 255, 255, .48); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+.about__presence-bottom { padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .1); }
+.about__presence-bottom span:first-child { display: inline-flex; align-items: center; gap: .45rem; }
+.about__presence-bottom i { display: block; width: .4rem; height: .4rem; border-radius: 50%; background: var(--brand-orange); box-shadow: 0 0 10px var(--brand-orange); }
+
+.world-map {
+	position: relative;
+	height: clamp(19rem, 34vw, 31rem);
+	margin: 1.2rem 0;
+	overflow: hidden;
+	border: 0;
+	background:
+		linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+		radial-gradient(ellipse at center, rgba(255, 106, 0, .1), transparent 62%);
+	background-size: 15% 20%, 15% 20%, 100% 100%;
+}
+.world-map::before {
+	position: absolute;
+	inset: 8% 3%;
+	background: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg') center / contain no-repeat;
+	content: "";
+	filter: invert(1) opacity(.2);
+}
+.world-map__grid { position: absolute; background: rgba(255, 255, 255, .08); }
+.world-map__grid--horizontal { top: 50%; right: 0; left: 0; height: 1px; }
+.world-map__grid--vertical { top: 0; bottom: 0; left: 50%; width: 1px; }
+.world-map__route { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 106, 0, .7), transparent); transform-origin: left center; animation: route-pulse 3.8s ease-in-out infinite; }
+.world-map__route--atlantic { top: 40%; left: 27%; width: 27%; transform: rotate(-13deg); }
+.world-map__route--pacific { top: 58%; left: 17%; width: 62%; transform: rotate(9deg); animation-delay: 1.2s; }
+.world-map__point { position: absolute; z-index: 2; display: flex; align-items: center; gap: .45rem; color: rgba(255, 255, 255, .72); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; }
+.world-map__point i { display: block; width: .62rem; height: .62rem; border: 2px solid #0b0b0b; border-radius: 50%; background: var(--brand-orange); box-shadow: 0 0 0 4px rgba(255, 106, 0, .16), 0 0 18px rgba(255, 106, 0, .9); animation: point-pulse 2.4s ease-in-out infinite; }
+.world-map__point b { font-weight: 600; white-space: nowrap; }
+.world-map__point--canada { top: 26%; left: 18%; }
+.world-map__point--usa { top: 43%; left: 22%; animation-delay: .35s; }
+.world-map__point--uk { top: 29%; left: 46%; animation-delay: .7s; }
+.world-map__point--india { top: 53%; left: 67%; animation-delay: 1.05s; }
+.world-map__point--singapore { top: 70%; left: 76%; animation-delay: 1.4s; }
+.world-map__caption { position: absolute; right: 1rem; bottom: 1rem; max-width: 12rem; color: rgba(255, 255, 255, .42); font-size: .65rem; line-height: 1.4; text-align: right; }
+
+@keyframes point-pulse { 0%, 100% { box-shadow: 0 0 0 3px rgba(255, 106, 0, .12), 0 0 12px rgba(255, 106, 0, .65); } 50% { box-shadow: 0 0 0 8px rgba(255, 106, 0, .03), 0 0 24px rgba(255, 106, 0, 1); } }
+@keyframes route-pulse { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+@media (max-width: 850px) {
+	.about__layout { grid-template-columns: 1fr; gap: 3.5rem; }
+	.about__copy { max-width: 42rem; }
+}
+@media (max-width: 520px) {
+	.about { padding-top: 4.5rem; }
+	.about__heading h2 { gap: .65rem; font-size: 1.08rem; letter-spacing: .1em; }
+	.about__presence-top > span { display: none; }
+	.world-map { height: 18rem; }
+	.world-map__point { font-size: .5rem; }
+	.world-map__point--canada { left: 12%; }
+	.world-map__point--usa { left: 14%; }
+	.world-map__point--uk { left: 40%; }
+	.world-map__point--india { left: 61%; }
+	.world-map__point--singapore { left: 68%; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.world-map__point i,
+	.world-map__route { animation: none; }
+}
