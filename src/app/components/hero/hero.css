@@ -8,6 +8,7 @@
   color: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /* =========================================
@@ -110,6 +111,11 @@
   margin: 0 auto;
   text-align: center;
   max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 58vh;
 }
 
 /* =========================================
@@ -121,7 +127,7 @@
   align-items: center;
   gap: 10px;
 
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   justify-content: center;
 
   color: #ffffff;
@@ -130,6 +136,7 @@
   font-weight: 800;
   letter-spacing: 0.24em;
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+  width: 100%;
 }
 
 .hero__eyebrow-dot {
@@ -160,25 +167,20 @@
   letter-spacing: 0.02em;
   font-weight: 800;
   text-transform: uppercase;
+  transform: translateY(-2px);
 }
 
 .hero__static {
   position: relative;
   z-index: 0;
-  color: #050505;
+  color: #f4f4f4;
   font: inherit;
-  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
 }
 
 .hero__static::before {
-  position: absolute;
-  inset: -0.35em -0.2em;
-  z-index: -1;
-  border-radius: 999px;
-  background: rgba(255, 95, 0, 0.14);
-  content: "";
-  filter: blur(18px);
-  opacity: 0.48;
+  display: none;
 }
 
 .hero__rotating {
@@ -402,6 +404,10 @@
     padding: 130px 6vw 90px;
   }
 
+  .hero__content {
+    min-height: 52vh;
+  }
+
   .hero__title {
     font-size: clamp(16px, 4.2vw, 42px);
   }
@@ -432,17 +438,20 @@
   .hero__content {
     max-width: 100%;
     width: 100%;
+    min-height: 48vh;
   }
 
   .hero__eyebrow {
     margin-bottom: 22px;
     font-size: 9px;
     letter-spacing: 0.16em;
+    gap: 8px;
   }
 
   .hero__title {
     font-size: clamp(13px, 4.5vw, 30px);
     line-height: 0.94;
+    transform: none;
   }
 
   .hero__description {
