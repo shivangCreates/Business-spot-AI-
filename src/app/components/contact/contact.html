@@ -28,7 +28,7 @@
 			</aside>
 
 			@if (!submitted()) {
-				<form class="contact-form" #projectForm="ngForm" (ngSubmit)="submitForm()" novalidate>
+				<form class="contact-form" #projectForm="ngForm" (ngSubmit)="submitForm(projectForm)" [attr.aria-busy]="isSubmitting()" novalidate>
 					<div class="contact-form__row">
 						<label>
 							<span>Your name</span>
@@ -63,13 +63,15 @@
 						<textarea name="message" ngModel required rows="5" placeholder="What are you building, improving, or trying to solve?"></textarea>
 					</label>
 
+					<p class="contact-form__error" role="alert" [hidden]="!submissionError()">{{ submissionError() }}</p>
+
 					<div class="contact-form__footer">
 						<label class="contact-form__consent">
 							<input type="checkbox" name="consent" ngModel required />
 							<span>I agree to be contacted about this project.</span>
 						</label>
-						<button type="submit" [disabled]="projectForm.invalid">
-							Send inquiry <span>↗</span>
+						<button type="submit" [disabled]="projectForm.invalid || isSubmitting()">
+							{{ isSubmitting() ? 'Sending...' : 'Send inquiry' }} <span>↗</span>
 						</button>
 					</div>
 				</form>

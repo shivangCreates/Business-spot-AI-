@@ -66,6 +66,7 @@
 .contact-form select option { background: #151515; color: #fff; }
 .contact-form textarea { min-height: 7rem; resize: vertical; }
 .contact-form__footer { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-top: .6rem; }
+.contact-form__error { margin: 0; color: #ff8a80; font-size: .85rem; line-height: 1.5; }
 .contact-form__consent { display: flex; align-items: start; gap: .6rem; color: rgba(255, 255, 255, .5); font-size: .68rem; line-height: 1.4; }
 .contact-form__consent input { accent-color: var(--brand-orange); margin-top: .12rem; }
 .contact-form button,
