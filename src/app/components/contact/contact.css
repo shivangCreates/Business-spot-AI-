@@ -62,6 +62,8 @@
 .contact-form textarea:focus { border-color: var(--brand-orange); background: rgba(255, 106, 0, .035); }
 .contact-form input::placeholder,
 .contact-form textarea::placeholder { color: rgba(255, 255, 255, .3); }
+.contact-form .contact-form__field--invalid { border-color: #ff6b6b; }
+.contact-form__field-error { margin: -.25rem 0 0; color: #ff6b6b; font-size: .78rem; line-height: 1.4; }
 .contact-form select { appearance: none; cursor: pointer; }
 .contact-form select option { background: #151515; color: #fff; }
 .contact-form textarea { min-height: 7rem; resize: vertical; }

@@ -19,9 +19,9 @@
 						<span class="contact__detail-label">Email us</span>
 						hello@businessspot.ai
 					</a>
-					<a href="tel:+919876543210">
+					<a href="tel:+917081850179">
 						<span class="contact__detail-label">Call our studio</span>
-						+91 98765 43210
+						+91 70818 50179
 					</a>
 				</div>
 				<p class="contact__availability"><span></span>Currently welcoming global projects</p>
@@ -60,7 +60,26 @@
 
 					<label>
 						<span>Tell us about the project</span>
-						<textarea name="message" ngModel required rows="5" placeholder="What are you building, improving, or trying to solve?"></textarea>
+						<textarea
+							#projectMessage="ngModel"
+							[class.contact-form__field--invalid]="projectMessage.touched && messageTooShort()"
+							[attr.aria-invalid]="projectMessage.touched && messageTooShort()"
+							[attr.aria-describedby]="projectMessage.touched && messageTooShort() ? 'project-message-error' : null"
+							name="message"
+							ngModel
+							required
+							rows="5"
+							placeholder="What are you building, improving, or trying to solve?"
+							(ngModelChange)="updateMessageLength($event)"
+						></textarea>
+						<p
+							class="contact-form__field-error"
+							id="project-message-error"
+							role="alert"
+							[hidden]="!projectMessage.touched || !messageTooShort()"
+						>
+							Your project description must be at least 10 characters.
+						</p>
 					</label>
 
 					<p class="contact-form__error" role="alert" [hidden]="!submissionError()">{{ submissionError() }}</p>
@@ -70,7 +89,7 @@
 							<input type="checkbox" name="consent" ngModel required />
 							<span>I agree to be contacted about this project.</span>
 						</label>
-						<button type="submit" [disabled]="projectForm.invalid || isSubmitting()">
+						<button type="submit" [disabled]="projectForm.invalid || messageTooShort() || isSubmitting()">
 							{{ isSubmitting() ? 'Sending...' : 'Send inquiry' }} <span>↗</span>
 						</button>
 					</div>

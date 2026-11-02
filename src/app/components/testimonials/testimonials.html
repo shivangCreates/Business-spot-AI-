@@ -1,51 +1,113 @@
 <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
-	<div class="testimonials__container page-container">
-		<header class="testimonials__header">
-			<h2 id="testimonials-title"><span>Testimonials</span></h2>
-			<p>
-				Trusted by ambitious teams who want technology to feel clearer, smarter, and more human.
-			</p>
-		</header>
+  <div class="testimonials__container page-container">
+    <header class="testimonials__header">
+      <h2 id="testimonials-title"><span>Testimonials</span></h2>
+      <p>Experiences across digital growth, AI, automation, and technology.</p>
+      <p class="testimonials__disclaimer">
+        Sample content for preview only — these are not verified client reviews.
+      </p>
+    </header>
 
-		<div
-			class="testimonial-deck"
-			aria-label="Client testimonials. Click or swipe to view another testimonial."
-			tabindex="0"
-			(pointerdown)="onPointerDown($event)"
-			(pointermove)="onPointerMove($event)"
-			(pointerup)="onPointerUp($event)"
-			(pointercancel)="onPointerUp($event)"
-			(click)="onDeckClick($event)"
-		>
-			@for (offset of [-2, -1, 0, 1, 2]; track testimonialAt(offset).name) {
-				@let testimonial = testimonialAt(offset);
-				<article
-					class="testimonial-card"
-					[class.testimonial-card--far-left]="offset === -2"
-					[class.testimonial-card--left]="offset === -1"
-					[class.testimonial-card--active]="offset === 0"
-					  [class.testimonial-card--enter-from-right]="offset === 0 && movementDirection() > 0"
-					  [class.testimonial-card--enter-from-left]="offset === 0 && movementDirection() < 0"
-					[class.testimonial-card--right]="offset === 1"
-					[class.testimonial-card--far-right]="offset === 2"
-					  (click)="$event.stopPropagation(); select(offset)"
-				>
-					<div class="testimonial-card__top">
-						<span class="testimonial-card__quote">“</span>
-						<span class="testimonial-card__mark">CLIENT NOTE</span>
-					</div>
-					<p class="testimonial-card__review">{{ testimonial.review }}</p>
-					<div class="testimonial-card__signature">
-						<img [src]="testimonial.image" [alt]="testimonial.alt" />
-						<span>
-							<strong>{{ testimonial.name }}</strong>
-							<small>{{ testimonial.role }}</small>
-						</span>
-					</div>
-				</article>
-			}
-		</div>
+    <div
+      class="testimonials__carousel"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Sample testimonials"
+      (mouseenter)="pauseAutoplay()"
+      (mouseleave)="resumeAutoplay()"
+      (focusin)="pauseAutoplay()"
+      (focusout)="resumeAutoplay()"
+    >
+      <div
+        class="testimonial-deck"
+        aria-label="Swipe or use the arrow keys to browse sample testimonials"
+        tabindex="0"
+        (pointerdown)="onPointerDown($event)"
+        (pointermove)="onPointerMove($event)"
+        (pointerup)="onPointerUp($event)"
+        (pointercancel)="onPointerUp($event)"
+        [class.testimonial-deck--dragging]="isDragging()"
+        [style.--drag-offset]="dragOffset() + 'px'"
+        (keydown)="onKeydown($event)"
+      >
+        @for (offset of offsets; track testimonialAt(offset).id) {
+          @let testimonial = testimonialAt(offset);
+          <article
+            class="testimonial-card"
+            [class.testimonial-card--left]="offset === -1"
+            [class.testimonial-card--active]="offset === 0"
+            [class.testimonial-card--right]="offset === 1"
+            [attr.aria-hidden]="offset !== 0"
+            [attr.aria-label]="'Sample testimonial ' + (indexAt(offset) + 1) + ' of ' + testimonials.length"
+            aria-roledescription="slide"
+          >
+            <div class="testimonial-card__top">
+              <span class="testimonial-card__quote" aria-hidden="true">“</span>
+              <span class="testimonial-card__sample">Sample</span>
+            </div>
 
-		<p class="testimonials__hint">Swipe or select a card to continue</p>
-	</div>
+            <div
+              class="testimonial-card__rating"
+              role="img"
+              [attr.aria-label]="testimonial.rating + ' out of 5 stars'"
+            >
+              @for (star of [1, 2, 3, 4, 5]; track star) {
+                <span aria-hidden="true">★</span>
+              }
+            </div>
+
+            <p class="testimonial-card__review">{{ testimonial.review }}</p>
+
+            <div class="testimonial-card__signature">
+              <img
+                class="testimonial-card__avatar"
+                [src]="testimonial.image"
+                [alt]="testimonial.imageAlt"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+              <span>
+                <strong>{{ testimonial.name }}</strong>
+                <small>{{ testimonial.category }}</small>
+              </span>
+            </div>
+          </article>
+        }
+      </div>
+
+      <div class="testimonials__controls" aria-label="Testimonial navigation">
+        <button
+          class="testimonials__arrow"
+          type="button"
+          aria-label="Previous testimonial"
+          (click)="move(-1)"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="testimonials__indicators" aria-label="Choose a testimonial">
+          @for (index of indicators; track index) {
+            <button
+              class="testimonials__indicator"
+              [class.testimonials__indicator--active]="activeIndex() === index"
+              [attr.aria-label]="'Show sample testimonial ' + (index + 1)"
+              [attr.aria-current]="activeIndex() === index ? 'true' : null"
+              type="button"
+              (click)="select(index)"
+            ></button>
+          }
+        </div>
+
+        <button
+          class="testimonials__arrow"
+          type="button"
+          aria-label="Next testimonial"
+          (click)="move(1)"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>

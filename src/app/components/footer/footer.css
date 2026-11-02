@@ -35,7 +35,8 @@
 .footer__socials a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgba(255, 255, 255, .22); border-radius: 50%; color: rgba(255, 255, 255, .75); transition: border-color .25s ease, background-color .25s ease, color .25s ease, transform .25s ease; }
 .footer__socials a:hover { border-color: var(--brand-orange); background: var(--brand-orange); color: #050505; transform: translateY(-3px); }
 .footer__socials svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; }
-.footer__socials a:nth-child(2) svg { fill: currentColor; stroke: none; }
+.footer__socials a:nth-child(2) svg,
+.footer__socials a:nth-child(3) svg { fill: currentColor; stroke: none; }
 .footer__nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
 .footer__nav div { display: flex; flex-direction: column; align-items: start; gap: .7rem; }
 .footer__nav p { margin: 0 0 .45rem; color: var(--bright-orange); font-size: .64rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }

@@ -14,11 +14,18 @@ export class Contact {
   readonly submitted = signal(false);
   readonly isSubmitting = signal(false);
   readonly submissionError = signal('');
+  readonly messageTooShort = signal(true);
 
   private readonly inquiryService = inject(InquiryService);
 
+  updateMessageLength(message: string | null | undefined): void {
+    this.messageTooShort.set((message ?? '').trim().length < 10);
+  }
+
   submitForm(form: NgForm): void {
-    if (form.invalid || this.isSubmitting()) {
+    const message = String(form.value.message ?? '').trim();
+    this.updateMessageLength(message);
+    if (form.invalid || this.messageTooShort() || this.isSubmitting()) {
       return;
     }
 
@@ -28,7 +35,7 @@ export class Contact {
       email: values.email.trim(),
       company: values.company?.trim() || null,
       project_type: values.projectType,
-      message: values.message.trim(),
+      message,
     };
 
     this.submissionError.set('');
@@ -39,6 +46,7 @@ export class Contact {
       .subscribe({
         next: () => {
           form.resetForm();
+          this.messageTooShort.set(true);
           this.submitted.set(true);
         },
         error: (error: unknown) => {

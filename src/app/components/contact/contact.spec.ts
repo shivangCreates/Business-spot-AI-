@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 import { Contact } from './contact';
 
@@ -28,6 +28,28 @@ describe('Contact', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('shows an error and blocks submission when the project description is under 10 characters', () => {
+    const textarea = fixture.debugElement.query(By.css('textarea'));
+    const messageModel = textarea.injector.get(NgModel);
+    const messageElement = textarea.nativeElement as HTMLTextAreaElement;
+
+    messageModel.control.setValue('Too short');
+    messageModel.control.markAsTouched();
+    component.updateMessageLength('Too short');
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('#project-message-error')?.hidden).toBeFalse();
+    expect(messageElement.getAttribute('aria-invalid')).toBe('true');
+    expect(fixture.nativeElement.querySelector('button[type="submit"]')?.disabled).toBeTrue();
+
+    messageModel.control.setValue('This is long enough');
+    component.updateMessageLength('This is long enough');
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('#project-message-error')?.hidden).toBeTrue();
+    expect(messageElement.getAttribute('aria-invalid')).toBe('false');
   });
 
   it('submits the backend payload and shows success only after the request succeeds', () => {

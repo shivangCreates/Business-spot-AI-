@@ -5,13 +5,24 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { Services } from './components/services/services';
 import { Portfolio } from './components/portfolio/portfolio';
 import { About } from './components/about/about';
+import { Founder } from './components/founder/founder';
 import { Testimonials } from './components/testimonials/testimonials';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [HeroComponent, NavbarComponent, Services, Portfolio, About, Testimonials, Contact, Footer],
+  imports: [
+    HeroComponent,
+    NavbarComponent,
+    Services,
+    Portfolio,
+    About,
+    Founder,
+    Testimonials,
+    Contact,
+    Footer,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
