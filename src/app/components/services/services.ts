@@ -24,8 +24,8 @@ export class Services {
       title: 'Digital Growth & Marketing',
       description:
         'We help local businesses, startups, and established companies worldwide strengthen their digital presence, attract the right audience, generate quality leads, and grow their business through strategic digital marketing.',
-      image: '/digital-marketing-service.webp',
-      imageAlt: 'Colorful infographic showing digital marketing channels and strategies',
+      image: '/Digital%20Marketing%20Growth%20Dashboard.png',
+      imageAlt: 'Digital marketing growth dashboard with campaign analytics',
       offerings: [
         'Social Media Marketing',
         'Search Engine Optimization (SEO)',
@@ -41,8 +41,8 @@ export class Services {
       title: 'AI Solutions & Intelligent Automation',
       description:
         'We help businesses worldwide leverage AI-powered solutions and intelligent automation to reduce repetitive work, save time and operational costs, improve productivity, and build smarter business workflows.',
-      image: '/ai-automation-service.webp',
-      imageAlt: 'AI automation technology connecting intelligent tools and workflows',
+      image: '/AI%20Automation%20Workflow%20Assistant.png',
+      imageAlt: 'AI automation workflow assistant interface',
       offerings: [
         'AI Agents and AI Chatbots',
         'Business Process Automation',
