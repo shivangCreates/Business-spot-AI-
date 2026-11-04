@@ -36,6 +36,6 @@ describe('Portfolio', () => {
     expect(cards[2].querySelector('img')?.getAttribute('src')).toBe(
       '/Business%20Spot%20AI%20Growth%20Campaign-1.png',
     );
-    expect(fixture.nativeElement.textContent).toContain('Ideas Into Digital Experiences.');
+    expect(fixture.nativeElement.textContent).toContain('OUR WORK - PORTFOLIO');
   });
 });
