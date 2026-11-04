@@ -1,58 +1,57 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 interface PortfolioProject {
-  id: string;
+  number: string;
   category: string;
   title: string;
   description: string;
   image: string;
   alt: string;
-  accent: string;
+  route: string;
+  tags: string[];
 }
 
 @Component({
   selector: 'app-portfolio',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './portfolio.html',
   styleUrl: './portfolio.css',
 })
 export class Portfolio {
   readonly projects: PortfolioProject[] = [
     {
-      id: 'northstar',
-      category: 'AI OPERATIONS',
-      title: 'Northstar Intelligence',
-      description: 'A decision platform that turns complex business data into clear next actions.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
-      alt: 'Analytics dashboard showing business performance',
-      accent: '#ff6a00',
+      number: '01',
+      category: 'LOCAL BUSINESS SOLUTIONS',
+      title: 'Digital Experiences That Help Local Businesses Grow',
+      description:
+        'We help local businesses establish a strong digital presence through modern websites, smart business solutions, and customer-focused experiences that turn visitors into potential customers.',
+      image: '/Local%20Business%20Growth%20Solutions.png',
+      alt: 'Local business growth solutions concept',
+      route: '/portfolio/local-business-solutions',
+      tags: ['Web Development', 'Business Solutions', 'UX Design'],
     },
     {
-      id: 'atlas',
-      category: 'DIGITAL PRODUCT',
-      title: 'Atlas Commerce',
-      description: 'A global commerce experience designed to make every customer journey feel effortless.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85',
-      alt: 'Modern online shopping experience',
-      accent: '#e2b35d',
+      number: '02',
+      category: 'AI & AUTOMATION',
+      title: 'Smarter Workflows. Powered by AI.',
+      description:
+        'We build intelligent AI assistants, custom chatbots, and workflow automation systems that help businesses reduce repetitive work, improve customer interactions, and operate more efficiently.',
+      image: '/Work%20Smarter%20with%20AI-2.png',
+      alt: 'AI and automation solutions concept',
+      route: '/portfolio/ai-automation',
+      tags: ['AI Solutions', 'Automation', 'AI Chatbots'],
     },
     {
-      id: 'kinetic',
-      category: 'AUTOMATION SYSTEMS',
-      title: 'Kinetic Workflow',
-      description: 'Connected automation that gives teams back time and keeps operations moving.',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85',
-      alt: 'Server room representing connected systems',
-      accent: '#70a1ff',
-    },
-    {
-      id: 'mosaic',
-      category: 'BRAND EXPERIENCE',
-      title: 'Mosaic Health',
-      description: 'A calm, human digital experience for a healthcare brand serving modern families.',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85',
-      alt: 'Healthcare professional using a digital tablet',
-      accent: '#67c587',
+      number: '03',
+      category: 'DIGITAL MARKETING',
+      title: 'Turn Attention Into Business Growth',
+      description:
+        'We help brands grow their online presence through strategic digital marketing, engaging content, SEO, and data-driven campaigns designed to reach the right audience.',
+      image: '/Business%20Spot%20AI%20Growth%20Campaign-1.png',
+      alt: 'Digital marketing growth campaign concept',
+      route: '/portfolio/digital-marketing',
+      tags: ['Digital Marketing', 'SEO', 'Social Media'],
     },
   ];
 }

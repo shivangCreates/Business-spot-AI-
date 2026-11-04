@@ -1,0 +1,21 @@
+<main class="case-study" aria-labelledby="case-study-title">
+  <header class="case-study__header">
+    <a class="case-study__brand" routerLink="/" aria-label="Business Spot AI home">
+      Business Spot <span>AI</span>
+    </a>
+    <a class="case-study__back" [routerLink]="['/']" fragment="work">
+      <span aria-hidden="true">←</span>
+      Back to portfolio
+    </a>
+  </header>
+
+  <section class="case-study__content">
+    <p class="case-study__eyebrow">Service-category case study</p>
+    <p class="case-study__category">{{ category }}</p>
+    <h1 id="case-study-title">{{ title }}</h1>
+    <p class="case-study__description">
+      A closer look at the strategy, design, and technology behind this service category.
+    </p>
+    <p class="case-study__note">Detailed case study content coming soon.</p>
+  </section>
+</main>

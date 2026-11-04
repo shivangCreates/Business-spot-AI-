@@ -1,55 +1,48 @@
 <section class="portfolio" id="work" aria-labelledby="portfolio-title">
-	<div class="portfolio__container page-container">
-		<header class="portfolio__header">
-			<h2 class="portfolio__title" id="portfolio-title"><span>Portfolio</span></h2>
-			<p class="portfolio__intro">
-				From the first question to the final launch, we create digital work that makes ambitious
-				businesses easier to understand, easier to run, and ready for what comes next.
-			</p>
-		</header>
+  <div class="portfolio__container page-container">
+    <header class="portfolio__header">
+      <h2 class="portfolio__title" id="portfolio-title"><span>OUR WORK - PORTFOLIO</span></h2>
+      <p class="portfolio__intro">
+        Explore how we combine technology, creativity, and strategy to help businesses grow.
+      </p>
+    </header>
 
-		<div class="process-map" aria-label="Our delivery process">
-			<div class="process-map__track" aria-hidden="true"></div>
-			@for (step of [
-				{ number: '01', icon: '○', title: 'Discover', text: 'Understand the business, users and problem.' },
-				{ number: '02', icon: '◇', title: 'Strategize', text: 'Define the right technology and solution.' },
-				{ number: '03', icon: '✦', title: 'Build', text: 'Design and develop the product.' },
-				{ number: '04', icon: '↔', title: 'Integrate', text: 'Connect systems, AI and automation.' },
-				{ number: '05', icon: '↗', title: 'Launch & Improve', text: 'Deploy, measure and continuously improve.' }
-			]; track step.number) {
-				<article class="process-step">
-					<div class="process-step__node"><span>{{ step.icon }}</span></div>
-					<div class="process-step__content">
-						<span class="process-step__number">{{ step.number }}</span>
-						<h3>{{ step.title }}</h3>
-						<p>{{ step.text }}</p>
-					</div>
-				</article>
-			}
-		</div>
+    <div class="portfolio-grid" aria-label="Portfolio service categories">
+      @for (project of projects; track project.number) {
+        <a
+          class="portfolio-card"
+          [routerLink]="project.route"
+          [attr.aria-label]="'Explore case study: ' + project.title"
+        >
+          <div class="portfolio-card__visual">
+            <img
+              [src]="project.image"
+              [alt]="project.alt"
+              width="1254"
+              height="1254"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="portfolio-card__number">{{ project.number }}</span>
+          </div>
 
-		<div class="portfolio__projects-header">
-			<div>
-				<p class="portfolio__eyebrow">Selected work</p>
-				<h3>Built to be remembered.</h3>
-			</div>
-		</div>
+          <div class="portfolio-card__body">
+            <h3 class="portfolio-card__title">{{ project.title }}</h3>
+            <p class="portfolio-card__description">{{ project.description }}</p>
 
-		<div class="portfolio-grid" aria-label="Portfolio projects">
-			@for (project of projects; track project.id) {
-				<article class="portfolio-card">
-					<div class="portfolio-card__image">
-						<img [src]="project.image" [alt]="project.alt" />
-						<span class="portfolio-card__glow" [style.background]="project.accent"></span>
-						<span class="portfolio-card__index">{{ project.id }}</span>
-					</div>
-					<div class="portfolio-card__body">
-						<p>{{ project.category }}</p>
-						<h4>{{ project.title }}</h4>
-						<span>{{ project.description }}</span>
-					</div>
-				</article>
-			}
-		</div>
-	</div>
+            <ul class="portfolio-card__tags" aria-label="Services">
+              @for (tag of project.tags; track tag) {
+                <li>{{ tag }}</li>
+              }
+            </ul>
+
+            <span class="portfolio-card__link">
+              Explore Case Study
+              <span class="portfolio-card__arrow" aria-hidden="true">↗</span>
+            </span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
 </section>
